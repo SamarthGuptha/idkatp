@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cxhn0a7d3gqoi" path="res://assets/images/player/Player.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://di1re6a22fcmm" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="AudioStream" uid="uid://b6sr16rsa0hq8" path="res://assets/audio/Whoosh.wav" id="3_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")
@@ -424,13 +425,31 @@ animations = [{
 script/source = "extends AnimatedSprite2D
 "
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(15, 17)
+
 [node name="Player" type="CharacterBody2D" unique_id=445982398]
 scale = Vector2(4, 4)
 script = ExtResource("1_g2els")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=492106479]
 sprite_frames = SubResource("SpriteFrames_sh265")
-animation = &"idle_right"
+animation = &"attack_right"
+frame = 3
+frame_progress = 1.0
 script = SubResource("GDScript_ha2mi")
 
+[node name="swingSword" type="AudioStreamPlayer2D" parent="." unique_id=847771364]
+stream = ExtResource("3_qhqgy")
+pitch_scale = 2.5
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=349609831]
+position = Vector2(7.6, -0.5)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=720512884]
+position = Vector2(-0.25, 0)
+shape = SubResource("RectangleShape2D_qhqgy")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
