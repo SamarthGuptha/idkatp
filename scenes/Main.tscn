@@ -1,12 +1,7 @@
 [gd_scene format=3 uid="uid://dgdx5uvitqwde"]
 
-[ext_resource type="PackedScene" uid="uid://ddywj62qmt1gy" path="res://scenes/player.tscn" id="1_elqb8"]
-[ext_resource type="PackedScene" uid="uid://b1uq3uuvx3hav" path="res://scenes/slime.tscn" id="2_rvslj"]
+[ext_resource type="PackedScene" uid="uid://c37fdjuxilbyg" path="res://scenes/levels/base_level.tscn" id="1_0bbpv"]
 
 [node name="Main" type="Node2D" unique_id=1779618113]
 
-[node name="Player" parent="." unique_id=445982398 instance=ExtResource("1_elqb8")]
-position = Vector2(585, 344)
-
-[node name="Slime" parent="." unique_id=1017460 instance=ExtResource("2_rvslj")]
-position = Vector2(944, 232)
+[node name="levelRoot" parent="." unique_id=119257364 instance=ExtResource("1_0bbpv")]
