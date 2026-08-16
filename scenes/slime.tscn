@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://b1uq3uuvx3hav"]
 
 [ext_resource type="Texture2D" uid="uid://biu23b8q2lejv" path="res://assets/images/enemies/Slime_Green.png" id="1_371uh"]
+[ext_resource type="Script" uid="uid://cs5brjj5gr6u4" path="res://scripts/slime.gd" id="1_p2gj0"]
+[ext_resource type="AudioStream" uid="uid://c0740aqh27o74" path="res://assets/audio/hit_enemy.wav" id="3_n6pvg"]
+[ext_resource type="PackedScene" uid="uid://c3qnf7v70uwfy" path="res://scenes/health_bar.tscn" id="4_pjw23"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p2gj0"]
 atlas = ExtResource("1_371uh")
@@ -138,7 +141,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tyl0w")
 }],
-"loop": true,
+"loop": false,
 "name": &"die",
 "speed": 8.0
 }, {
@@ -163,16 +166,38 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_371uh"]
 size = Vector2(20.5, 14.5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_371uh"]
+radius = 6.7687583
+
 [node name="Slime" type="CharacterBody2D" unique_id=1017460]
 scale = Vector2(2, 2)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_p2gj0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1577628002]
-position = Vector2(-1.5, 0)
 sprite_frames = SubResource("SpriteFrames_24adn")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
-frame_progress = 0.013134544
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1492747404]
 position = Vector2(-1.25, 0.25)
 shape = SubResource("RectangleShape2D_371uh")
+
+[node name="Sight" type="Area2D" parent="." unique_id=1530140037]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sight" unique_id=965837852]
+scale = Vector2(21.710281, 21.639277)
+shape = SubResource("CircleShape2D_371uh")
+
+[node name="takeDMG" type="AudioStreamPlayer2D" parent="." unique_id=1231598120]
+stream = ExtResource("3_n6pvg")
+pitch_scale = 0.78
+max_distance = 1705.0
+attenuation = 1e-05
+
+[node name="HealthBar" parent="." unique_id=981727351 instance=ExtResource("4_pjw23")]
+position = Vector2(-9, 9)
+
+[connection signal="body_entered" from="Sight" to="." method="_on_sight_body_entered"]
+[connection signal="body_exited" from="Sight" to="." method="_on_sight_body_exited"]

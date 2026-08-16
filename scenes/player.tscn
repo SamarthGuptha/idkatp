@@ -425,6 +425,9 @@ animations = [{
 script/source = "extends AnimatedSprite2D
 "
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqkch"]
+size = Vector2(10, 5.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(15, 17)
 
@@ -439,12 +442,17 @@ frame = 3
 frame_progress = 1.0
 script = SubResource("GDScript_ha2mi")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=140589186]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_dqkch")
+
 [node name="swingSword" type="AudioStreamPlayer2D" parent="." unique_id=847771364]
 stream = ExtResource("3_qhqgy")
 pitch_scale = 2.5
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=349609831]
 position = Vector2(7.6, -0.5)
+collision_mask = 2
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=720512884]
