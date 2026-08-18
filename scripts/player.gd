@@ -4,6 +4,10 @@ var last_direction: Vector2 = Vector2.RIGHT
 var is_attacking: bool = false
 var strength: int = 20
 var hitbox_offset: Vector2
+var health: int = 100
+var max_health: int = 100
+
+
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var swing_sword: AudioStreamPlayer2D = $swingSword
@@ -83,3 +87,8 @@ func update_hitbox_offset() -> void:
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if is_attacking and body.name.begins_with("Slime"):
 		body.take_dmg(strength, position)
+		
+		
+func take_damage(amount: int) -> void:
+	health -= amount
+	print(health)
