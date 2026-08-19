@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://chqe0y2v2206p"]
+
+[ext_resource type="Script" uid="uid://b7u85uyai2d3w" path="res://scripts/health_pickup.gd" id="1_3p6mu"]
+[ext_resource type="Texture2D" uid="uid://cfi4rhyyiu7wb" path="res://assets/images/IconHeart.png" id="1_ciapp"]
+[ext_resource type="AudioStream" uid="uid://gd8pccu12a4x" path="res://assets/audio/health_pickup.wav" id="3_i662h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3p6mu"]
+size = Vector2(50, 42)
+
+[node name="HealthPickup" type="Area2D" unique_id=2076711371]
+script = ExtResource("1_3p6mu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1950154173]
+scale = Vector2(3, 3)
+texture = ExtResource("1_ciapp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=873086334]
+shape = SubResource("RectangleShape2D_3p6mu")
+
+[node name="CollectedSound" type="AudioStreamPlayer2D" parent="." unique_id=1652264291]
+stream = ExtResource("3_i662h")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

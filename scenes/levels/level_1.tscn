@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cxklgbmsbpfs" path="res://assets/images/tileset/TilesCuteFantasy/Outdoor decoration/Bridge_Wood.png" id="9_wtwp4"]
 [ext_resource type="PackedScene" uid="uid://ddywj62qmt1gy" path="res://scenes/player.tscn" id="10_iwr0g"]
 [ext_resource type="PackedScene" uid="uid://b1uq3uuvx3hav" path="res://scenes/slime.tscn" id="11_bahl2"]
+[ext_resource type="PackedScene" uid="uid://chqe0y2v2206p" path="res://scenes/health_pickup.tscn" id="12_iav0o"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uk53i"]
 texture = ExtResource("6_dnkej")
@@ -696,3 +697,8 @@ position = Vector2(-3, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit" unique_id=675992055]
 position = Vector2(3073.5, 576)
 shape = SubResource("RectangleShape2D_j7gcg")
+
+[node name="Items" type="Node2D" parent="." unique_id=882822281]
+
+[node name="HealthPickup" parent="Items" unique_id=2076711371 instance=ExtResource("12_iav0o")]
+position = Vector2(128, 327)

@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cxhn0a7d3gqoi" path="res://assets/images/player/Player.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://di1re6a22fcmm" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="AudioStream" uid="uid://b6sr16rsa0hq8" path="res://assets/audio/Whoosh.wav" id="3_qhqgy"]
+[ext_resource type="AudioStream" uid="uid://buqrqt7m1v08p" path="res://assets/audio/player_damage.wav" id="4_dqkch"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2els"]
 atlas = ExtResource("1_3vyb7")
@@ -466,6 +467,13 @@ limit_right = 3200
 limit_bottom = 1088
 drag_horizontal_enabled = true
 drag_horizontal_offset = 0.15
+
+[node name="TakeDamage" type="AudioStreamPlayer2D" parent="." unique_id=371694448]
+stream = ExtResource("4_dqkch")
+
+[node name="DamageCooldown" type="Timer" parent="." unique_id=1888076737]
+wait_time = 0.5
+one_shot = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
