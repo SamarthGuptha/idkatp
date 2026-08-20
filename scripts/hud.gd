@@ -15,7 +15,7 @@ func set_player(p) -> void:
 func _update_health(new_health: int) -> void:
 	var hearts = hearts_container.get_children()
 	var max_hearts = len(hearts)
-	var full=int(new_health / HEART_SIZE)
+	var full = int(new_health / HEART_SIZE)
 	var half = 1 if (new_health % HEART_SIZE)>0 else 0
 	var empty = max_hearts - (full + half)
 	for i in full:
