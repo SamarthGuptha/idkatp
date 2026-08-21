@@ -2,6 +2,14 @@
 
 [ext_resource type="Script" uid="uid://c8eotx2fddbsh" path="res://scripts/hud.gd" id="1_ahhtf"]
 [ext_resource type="Texture2D" uid="uid://tt53g5ddfss0" path="res://assets/images/UI/Heart_full.png" id="2_oo0fn"]
+[ext_resource type="Script" uid="uid://cmmo2d6da8yje" path="res://scripts/label.gd" id="3_5ysmq"]
+[ext_resource type="Texture2D" uid="uid://s3g4i4olsjxp" path="res://assets/images/ChoiceBox.png" id="3_6fi6k"]
+[ext_resource type="FontFile" uid="uid://pnb88hl2jv5y" path="res://assets/images/NormalFont.ttf" id="4_uo2fv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_047uy"]
+font = ExtResource("4_uo2fv")
+font_size = 13
+font_color = Color(0, 0, 0, 1)
 
 [node name="HUD" type="CanvasLayer" unique_id=1073141412]
 script = ExtResource("1_ahhtf")
@@ -44,3 +52,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="coinslabel" type="TextureRect" parent="." unique_id=1782940435]
+offset_left = 507.0
+offset_top = 8.0
+offset_right = 571.0
+offset_bottom = 48.0
+scale = Vector2(1.438, 1)
+texture = ExtResource("3_6fi6k")
+
+[node name="Label" type="Label" parent="." unique_id=1742638106]
+offset_left = 513.0
+offset_top = 14.0
+offset_right = 592.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+label_settings = SubResource("LabelSettings_047uy")
+uppercase = true
+script = ExtResource("3_5ysmq")

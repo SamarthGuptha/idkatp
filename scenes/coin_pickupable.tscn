@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ccolmj6l4kq36"]
+
+[ext_resource type="Script" uid="uid://dnv773h0iu3cq" path="res://scripts/coin_pickupable.gd" id="1_sluec"]
+[ext_resource type="Texture2D" uid="uid://5x33d6ro8vdi" path="res://assets/images/AmmoSpecial.png" id="1_xam76"]
+[ext_resource type="AudioStream" uid="uid://dssxa7jwll523" path="res://assets/audio/coin_drop.mp3" id="3_y7rq0"]
+[ext_resource type="AudioStream" uid="uid://bvupuwxnbaxc7" path="res://assets/audio/coin_collect.mp3" id="4_atmln"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jc84t"]
+radius = 17.029335
+height = 36.055504
+
+[node name="coin_pickupable" type="Area2D" unique_id=790497851]
+script = ExtResource("1_sluec")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1463305373]
+scale = Vector2(3, 3)
+texture = ExtResource("1_xam76")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1122335673]
+rotation = -1.6270825
+scale = Vector2(1, 1.1199996)
+shape = SubResource("CapsuleShape2D_jc84t")
+
+[node name="coin_drop" type="AudioStreamPlayer2D" parent="." unique_id=1180208531]
+stream = ExtResource("3_y7rq0")
+
+[node name="coin_collect" type="AudioStreamPlayer2D" parent="." unique_id=1461504456]
+stream = ExtResource("4_atmln")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -7,13 +7,13 @@ var target = null
 var target_in_range: bool = false
 var is_alive: bool = true
 var strength: int = 10
+const COIN_SCENE = preload("res://scenes/coin_pickupable.tscn")
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var take_dmg_sound: AudioStreamPlayer2D = $takeDMG
 @onready var health_bar: Node2D = $HealthBar
 @onready var attack_timer: Timer = $AttackTimer
 
 var health_pickup_scene = preload("res://scenes/health_pickup.tscn")
-
 
 func _physics_process(delta: float) -> void:
 	if is_alive && target: _attack(delta)
@@ -46,6 +46,7 @@ func _die() -> void:
 	if randf() <= DROP_CHANcE:
 		drop_item()
 	queue_free()
+	if randf()>0.5: drop_coin()
 func _on_sight_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		target = body
@@ -80,4 +81,8 @@ func drop_item():
 	var level_root = get_parent().get_parent()
 	var items = level_root.get_node("Items")
 	items.call_deferred("add_child", drop)
-	
+
+func drop_coin():
+	var coin_instance = COIN_SCENE.instantiate()
+	coin_instance.position = position
+	get_tree().current_scene.add_child(coin_instance)
