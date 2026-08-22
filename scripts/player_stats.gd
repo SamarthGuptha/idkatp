@@ -2,7 +2,7 @@ extends Node
 
 var coins: int = 0
 var health: int = 100
-var inventory: Array = [null, null,null, null, null]
+var inventory: Array = [null, null,null, null]
 var max_health: int=100
 
 var item_textures: Dictionary = {

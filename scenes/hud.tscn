@@ -69,7 +69,7 @@ script = ExtResource("3_5ysmq")
 offset_left = 1176.0
 offset_top = 29.0
 offset_right = 1226.0
-offset_bottom = 285.0
+offset_bottom = 235.0
 size_flags_stretch_ratio = 0.83
 script = ExtResource("6_5pdws")
 
@@ -126,20 +126,6 @@ offset_left = 6.0
 offset_top = 3.0
 offset_right = 46.0
 offset_bottom = 43.0
-expand_mode = 1
-stretch_mode = 5
-
-[node name="TextureRect5" type="TextureRect" parent="VBoxContainer" unique_id=1447343748]
-layout_mode = 2
-texture = ExtResource("7_hd3ao")
-stretch_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/TextureRect5" unique_id=1193745002]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 44.0
-offset_bottom = 44.0
 expand_mode = 1
 stretch_mode = 5
 

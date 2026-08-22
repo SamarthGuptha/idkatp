@@ -14,6 +14,7 @@ font_size = 14
 font_color = Color(0.64705884, 0.3764706, 0.54509807, 1)
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
+shadow_size = 6
 shadow_color = Color(0, 0, 0, 0.53333336)
 
 [node name="purple_gem" type="Area2D" unique_id=1339382101]

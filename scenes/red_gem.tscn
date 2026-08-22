@@ -1,12 +1,23 @@
 [gd_scene format=3 uid="uid://cb085i236a1ri"]
 
 [ext_resource type="Texture2D" uid="uid://bvi2eiijcms8e" path="res://assets/images/gems/GemRed.png" id="1_l0vri"]
+[ext_resource type="Script" uid="uid://dlgt6bogga3i1" path="res://scripts/red_gem.gd" id="1_ola1j"]
 [ext_resource type="AudioStream" uid="uid://bvupuwxnbaxc7" path="res://assets/audio/coin_collect.mp3" id="2_rx8dq"]
+[ext_resource type="FontFile" uid="uid://pnb88hl2jv5y" path="res://assets/images/NormalFont.ttf" id="3_rx8dq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ola1j"]
 radius = 61.03
 
+[sub_resource type="LabelSettings" id="LabelSettings_ola1j"]
+font = ExtResource("3_rx8dq")
+font_color = Color(0.9019608, 0.41568628, 0.22745098, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.53333336)
+
 [node name="red_gem" type="Area2D" unique_id=2076645281]
+script = ExtResource("1_ola1j")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1087857821]
 scale = Vector2(2.6, 2.6)
@@ -17,3 +28,14 @@ shape = SubResource("CircleShape2D_ola1j")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=277222215]
 stream = ExtResource("2_rx8dq")
+
+[node name="Label" type="Label" parent="." unique_id=2021609752]
+offset_left = -74.0
+offset_top = -46.0
+offset_right = 93.0
+offset_bottom = -23.0
+text = "Press  'E'  to collect."
+label_settings = SubResource("LabelSettings_ola1j")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://3q6odu53p717"]
+
+[ext_resource type="Script" uid="uid://kxg7uib1gm6p" path="res://scripts/villager.gd" id="1_37mdv"]
+[ext_resource type="Texture2D" uid="uid://glsp3do64xjx" path="res://assets/images/SpriteSheet.png" id="1_kufqh"]
+[ext_resource type="Texture2D" uid="uid://ducift6p8868r" path="res://assets/images/DialogBoxFaceset.png" id="3_6eh0s"]
+[ext_resource type="Texture2D" uid="uid://dahh8xdtwsgsn" path="res://assets/images/Faceset.png" id="4_a0ief"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjpa3"]
+atlas = ExtResource("1_kufqh")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0lkk"]
+atlas = ExtResource("1_kufqh")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_37mdv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjpa3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0lkk")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6eh0s"]
+radius = 136.01471
+
+[node name="villager" type="Area2D" unique_id=2078270695]
+script = ExtResource("1_37mdv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1078018256]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_37mdv")
+animation = &"idle"
+frame = 1
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1244143089]
+visible = false
+shape = SubResource("CircleShape2D_6eh0s")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1653426704]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=2141893985]
+offset_left = 381.99997
+offset_top = 585.00006
+offset_right = 682.0
+offset_bottom = 643.00006
+scale = Vector2(1.5464824, 1.8103448)
+texture = ExtResource("3_6eh0s")
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TextureRect" unique_id=250135617]
+layout_mode = 0
+offset_left = 5.17305
+offset_top = 12.704729
+offset_right = 45.17305
+offset_bottom = 52.704727
+texture = ExtResource("4_a0ief")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TextureRect" unique_id=1734801749]
+layout_mode = 0
+offset_left = 49.143806
+offset_top = 11.599967
+offset_right = 89.14381
+offset_bottom = 51.599968
+scale = Vector2(6.190786, 1)
+scroll_active = false

@@ -12,6 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://ddywj62qmt1gy" path="res://scenes/player.tscn" id="10_iwr0g"]
 [ext_resource type="PackedScene" uid="uid://b1uq3uuvx3hav" path="res://scenes/slime.tscn" id="11_bahl2"]
 [ext_resource type="PackedScene" uid="uid://8hwr8mvd6m2r" path="res://scenes/green_gem.tscn" id="12_iav0o"]
+[ext_resource type="PackedScene" uid="uid://cg3sovyeyjtw0" path="res://scenes/purple_gem.tscn" id="13_dnkej"]
+[ext_resource type="PackedScene" uid="uid://cb085i236a1ri" path="res://scenes/red_gem.tscn" id="14_mm8aj"]
+[ext_resource type="PackedScene" uid="uid://dn3oumnp12kqf" path="res://scenes/yellow_gem.tscn" id="15_wtwp4"]
+[ext_resource type="PackedScene" uid="uid://3q6odu53p717" path="res://scenes/villager.tscn" id="16_iwr0g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uk53i"]
 texture = ExtResource("6_dnkej")
@@ -708,5 +712,16 @@ shape = SubResource("RectangleShape2D_j7gcg")
 
 [node name="green_gem" parent="." unique_id=1671206697 instance=ExtResource("12_iav0o")]
 position = Vector2(-525, 394)
+
+[node name="purple_gem" parent="." unique_id=1339382101 instance=ExtResource("13_dnkej")]
+position = Vector2(-255, 564)
+
+[node name="red_gem" parent="." unique_id=2076645281 instance=ExtResource("14_mm8aj")]
+position = Vector2(-337, 159)
+
+[node name="yellow_gem" parent="." unique_id=1818586145 instance=ExtResource("15_wtwp4")]
+position = Vector2(-237, 351)
+
+[node name="Area2D" parent="." unique_id=2078270695 instance=ExtResource("16_iwr0g")]
 
 [editable path="Player"]
