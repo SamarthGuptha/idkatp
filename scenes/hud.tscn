@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://cmmo2d6da8yje" path="res://scripts/label.gd" id="3_5ysmq"]
 [ext_resource type="Texture2D" uid="uid://s3g4i4olsjxp" path="res://assets/images/ChoiceBox.png" id="3_6fi6k"]
 [ext_resource type="FontFile" uid="uid://pnb88hl2jv5y" path="res://assets/images/NormalFont.ttf" id="4_uo2fv"]
+[ext_resource type="Script" uid="uid://b0au7hl140113" path="res://scripts/v_box_container.gd" id="6_5pdws"]
+[ext_resource type="Texture2D" uid="uid://d0tnxe2jfra3c" path="res://assets/images/FacesetBox.png" id="7_hd3ao"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_047uy"]
 font = ExtResource("4_uo2fv")
@@ -44,6 +46,103 @@ layout_mode = 2
 texture = ExtResource("2_oo0fn")
 stretch_mode = 2
 
+[node name="coinslabel" type="TextureRect" parent="." unique_id=1782940435]
+offset_left = 583.0
+offset_top = 8.0
+offset_right = 647.0
+offset_bottom = 48.0
+scale = Vector2(1.438, 1)
+texture = ExtResource("3_6fi6k")
+
+[node name="Label" type="Label" parent="." unique_id=1742638106]
+offset_left = 589.0
+offset_top = 14.0
+offset_right = 668.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+label_settings = SubResource("LabelSettings_047uy")
+uppercase = true
+script = ExtResource("3_5ysmq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=564609570]
+offset_left = 1176.0
+offset_top = 29.0
+offset_right = 1226.0
+offset_bottom = 285.0
+size_flags_stretch_ratio = 0.83
+script = ExtResource("6_5pdws")
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=39064912]
+layout_mode = 2
+texture = ExtResource("7_hd3ao")
+stretch_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/TextureRect" unique_id=1014888806]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 45.0
+offset_bottom = 43.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer" unique_id=709889602]
+layout_mode = 2
+texture = ExtResource("7_hd3ao")
+stretch_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/TextureRect2" unique_id=1025396852]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 45.0
+offset_bottom = 44.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer" unique_id=889491400]
+layout_mode = 2
+texture = ExtResource("7_hd3ao")
+stretch_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/TextureRect3" unique_id=648137243]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 44.0
+offset_bottom = 43.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer" unique_id=461600936]
+layout_mode = 2
+texture = ExtResource("7_hd3ao")
+stretch_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/TextureRect4" unique_id=5092447]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 46.0
+offset_bottom = 43.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextureRect5" type="TextureRect" parent="VBoxContainer" unique_id=1447343748]
+layout_mode = 2
+texture = ExtResource("7_hd3ao")
+stretch_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/TextureRect5" unique_id=1193745002]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 44.0
+offset_bottom = 44.0
+expand_mode = 1
+stretch_mode = 5
+
 [node name="FadeOverlay" type="ColorRect" parent="." unique_id=133473747]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
@@ -52,22 +151,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-
-[node name="coinslabel" type="TextureRect" parent="." unique_id=1782940435]
-offset_left = 507.0
-offset_top = 8.0
-offset_right = 571.0
-offset_bottom = 48.0
-scale = Vector2(1.438, 1)
-texture = ExtResource("3_6fi6k")
-
-[node name="Label" type="Label" parent="." unique_id=1742638106]
-offset_left = 513.0
-offset_top = 14.0
-offset_right = 592.0
-offset_bottom = 47.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
-label_settings = SubResource("LabelSettings_047uy")
-uppercase = true
-script = ExtResource("3_5ysmq")

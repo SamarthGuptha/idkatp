@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cg3sovyeyjtw0"]
+
+[ext_resource type="Script" uid="uid://cao316df2qsy6" path="res://scripts/purple_gem.gd" id="1_iobu4"]
+[ext_resource type="Texture2D" uid="uid://bdtmux1q6uip3" path="res://assets/images/gems/GemPurple.png" id="1_so0dl"]
+[ext_resource type="AudioStream" uid="uid://bvupuwxnbaxc7" path="res://assets/audio/coin_collect.mp3" id="2_wp4y4"]
+[ext_resource type="FontFile" uid="uid://pnb88hl2jv5y" path="res://assets/images/NormalFont.ttf" id="3_yvdy5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wp4y4"]
+radius = 61.03
+
+[sub_resource type="LabelSettings" id="LabelSettings_iobu4"]
+font = ExtResource("3_yvdy5")
+font_size = 14
+font_color = Color(0.64705884, 0.3764706, 0.54509807, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 0.53333336)
+
+[node name="purple_gem" type="Area2D" unique_id=1339382101]
+script = ExtResource("1_iobu4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=433519783]
+scale = Vector2(2.6, 2.6)
+texture = ExtResource("1_so0dl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1692345793]
+shape = SubResource("CircleShape2D_wp4y4")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=931270365]
+stream = ExtResource("2_wp4y4")
+
+[node name="Label" type="Label" parent="." unique_id=318105284]
+offset_left = -63.0
+offset_top = -42.0
+offset_right = 98.0
+offset_bottom = 5.0
+text = "Press  'E'  to collect
+"
+label_settings = SubResource("LabelSettings_iobu4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

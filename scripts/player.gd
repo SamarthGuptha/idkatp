@@ -113,6 +113,7 @@ func take_damage(amount: int) -> void:
 		
 	
 func die() -> void:
+	PlayerStats.coins = max(0, PlayerStats.coins-3)
 	animated_sprite_2d.play("dying")
 	alive = false
 	await animated_sprite_2d.animation_finished

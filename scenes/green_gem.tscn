@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://8hwr8mvd6m2r"]
+
+[ext_resource type="Texture2D" uid="uid://c28fpwhe4w3op" path="res://assets/images/gems/GemGreen.png" id="1_dtnxf"]
+[ext_resource type="Script" uid="uid://j1dpebx44n23" path="res://scripts/green_gem.gd" id="1_sleid"]
+[ext_resource type="AudioStream" uid="uid://bvupuwxnbaxc7" path="res://assets/audio/coin_collect.mp3" id="2_sleid"]
+[ext_resource type="FontFile" uid="uid://pnb88hl2jv5y" path="res://assets/images/NormalFont.ttf" id="3_ijd77"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fqh5i"]
+font = ExtResource("3_ijd77")
+font_size = 13
+font_color = Color(0.6784314, 0.7372549, 0.22745098, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 6
+shadow_color = Color(0, 0, 0, 0.53333336)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ijd77"]
+radius = 61.03278
+
+[node name="green_gem" type="Area2D" unique_id=1671206697]
+script = ExtResource("1_sleid")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=718732603]
+position = Vector2(0, -1)
+scale = Vector2(2.6, 2.6)
+texture = ExtResource("1_dtnxf")
+
+[node name="Label" type="Label" parent="." unique_id=767364861]
+offset_left = -63.0
+offset_top = -47.0
+offset_right = 68.0
+offset_bottom = -29.0
+text = "Press  'E'  to collect  "
+label_settings = SubResource("LabelSettings_fqh5i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=100334926]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_ijd77")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1419302841]
+stream = ExtResource("2_sleid")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

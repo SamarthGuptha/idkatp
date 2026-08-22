@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dn3oumnp12kqf"]
+
+[ext_resource type="Texture2D" uid="uid://bjllktu7ty0eh" path="res://assets/images/gems/GemYellow.png" id="1_7nnep"]
+[ext_resource type="AudioStream" uid="uid://bvupuwxnbaxc7" path="res://assets/audio/coin_collect.mp3" id="2_osf5n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wxbf7"]
+radius = 61.03
+
+[node name="yellow_gem" type="Area2D" unique_id=1818586145]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1229239254]
+scale = Vector2(2.6, 2.6)
+texture = ExtResource("1_7nnep")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1244784849]
+shape = SubResource("CircleShape2D_wxbf7")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=992812979]
+stream = ExtResource("2_osf5n")
