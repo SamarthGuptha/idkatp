@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://utmrxhrcm8dl"]
+
+[ext_resource type="Script" uid="uid://ybf8ffarn4ei" path="res://scripts/villager_2.gd" id="1_7oxdj"]
+[ext_resource type="Texture2D" uid="uid://detqfirrd5657" path="res://assets/images/npcs/SpriteSheetVillager2.png" id="1_o58h2"]
+[ext_resource type="Texture2D" uid="uid://ducift6p8868r" path="res://assets/images/DialogBoxFaceset.png" id="2_7oxdj"]
+[ext_resource type="Texture2D" uid="uid://dh3fhwggl8khw" path="res://assets/images/npcs/FacesetVillager2.png" id="3_1eb3k"]
+[ext_resource type="FontFile" uid="uid://pnb88hl2jv5y" path="res://assets/images/NormalFont.ttf" id="4_t6cx6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kffpg"]
+atlas = ExtResource("1_o58h2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qjkc5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kffpg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x3ixa"]
+radius = 136.01
+
+[sub_resource type="LabelSettings" id="LabelSettings_1eb3k"]
+font = ExtResource("4_t6cx6")
+font_size = 11
+font_color = Color(0.81960785, 0.29411766, 0.20392157, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.53333336)
+
+[node name="Villager2" type="Area2D" unique_id=412575491]
+script = ExtResource("1_7oxdj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1455228951]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_qjkc5")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=665250924]
+shape = SubResource("CircleShape2D_x3ixa")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=114696800]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=980737595]
+offset_left = 382.0
+offset_top = 585.0
+offset_right = 682.0
+offset_bottom = 643.0
+scale = Vector2(1.546, 1.81)
+texture = ExtResource("2_7oxdj")
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TextureRect" unique_id=1950963141]
+layout_mode = 0
+offset_left = 5.174644
+offset_top = 12.1546955
+offset_right = 45.174644
+offset_bottom = 52.154694
+texture = ExtResource("3_1eb3k")
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TextureRect" unique_id=662417731]
+layout_mode = 0
+offset_left = 51.74644
+offset_top = 11.049724
+offset_right = 294.95468
+offset_bottom = 54.143627
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_t6cx6")
+theme_override_font_sizes/normal_font_size = 19
+
+[node name="Label" type="Label" parent="CanvasLayer/TextureRect" unique_id=569732259]
+layout_mode = 0
+offset_left = 8.408791
+offset_top = -4.4198885
+offset_right = 63.40879
+offset_bottom = 18.580112
+text = "Villager"
+label_settings = SubResource("LabelSettings_1eb3k")

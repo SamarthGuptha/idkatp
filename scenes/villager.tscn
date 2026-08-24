@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://glsp3do64xjx" path="res://assets/images/SpriteSheet.png" id="1_kufqh"]
 [ext_resource type="Texture2D" uid="uid://ducift6p8868r" path="res://assets/images/DialogBoxFaceset.png" id="3_6eh0s"]
 [ext_resource type="Texture2D" uid="uid://dahh8xdtwsgsn" path="res://assets/images/Faceset.png" id="4_a0ief"]
+[ext_resource type="FontFile" uid="uid://pnb88hl2jv5y" path="res://assets/images/NormalFont.ttf" id="5_6eh0s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bjpa3"]
 atlas = ExtResource("1_kufqh")
@@ -30,6 +31,15 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_6eh0s"]
 radius = 136.01471
 
+[sub_resource type="LabelSettings" id="LabelSettings_6eh0s"]
+font = ExtResource("5_6eh0s")
+font_size = 11
+font_color = Color(0.65882355, 0.6313726, 0.16078432, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.53333336)
+
 [node name="villager" type="Area2D" unique_id=2078270695]
 script = ExtResource("1_37mdv")
 
@@ -41,7 +51,6 @@ frame = 1
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1244143089]
-visible = false
 shape = SubResource("CircleShape2D_6eh0s")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1653426704]
@@ -63,11 +72,34 @@ offset_right = 45.17305
 offset_bottom = 52.704727
 texture = ExtResource("4_a0ief")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TextureRect" unique_id=1734801749]
+[node name="Label" type="Label" parent="CanvasLayer/TextureRect" unique_id=1012814747]
 layout_mode = 0
-offset_left = 49.143806
-offset_top = 11.599967
-offset_right = 89.14381
-offset_bottom = 51.599968
-scale = Vector2(6.190786, 1)
+offset_left = 6.4663076
+offset_top = -3.8667006
+offset_right = 75.00897
+offset_bottom = 19.133299
+text = "Villager"
+label_settings = SubResource("LabelSettings_6eh0s")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/TextureRect" unique_id=1734801749]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.209564
+offset_top = -16.847649
+offset_right = 142.92284
+offset_bottom = 22.923775
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("5_6eh0s")
+theme_override_font_sizes/normal_font_size = 17
+fit_content = true
 scroll_active = false
+autowrap_mode = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
