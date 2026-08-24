@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cb085i236a1ri" path="res://scenes/red_gem.tscn" id="14_mm8aj"]
 [ext_resource type="PackedScene" uid="uid://dn3oumnp12kqf" path="res://scenes/yellow_gem.tscn" id="15_wtwp4"]
 [ext_resource type="PackedScene" uid="uid://3q6odu53p717" path="res://scenes/villager.tscn" id="16_iwr0g"]
+[ext_resource type="PackedScene" uid="uid://utmrxhrcm8dl" path="res://scenes/villager_2.tscn" id="17_bahl2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uk53i"]
 texture = ExtResource("6_dnkej")
@@ -723,5 +724,8 @@ position = Vector2(-337, 159)
 position = Vector2(-237, 351)
 
 [node name="Area2D" parent="." unique_id=2078270695 instance=ExtResource("16_iwr0g")]
+
+[node name="Villager2" parent="." unique_id=412575491 instance=ExtResource("17_bahl2")]
+position = Vector2(-504, 87)
 
 [editable path="Player"]
