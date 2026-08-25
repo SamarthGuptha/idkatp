@@ -33,6 +33,17 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 4
 shadow_color = Color(0, 0, 0, 0.53333336)
 
+[sub_resource type="LabelSettings" id="LabelSettings_7oxdj"]
+font = ExtResource("4_t6cx6")
+font_color = Color(0.81960785, 0.29411766, 0.20392157, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.53333336)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7oxdj"]
+size = Vector2(55, 34)
+
 [node name="Villager2" type="Area2D" unique_id=412575491]
 script = ExtResource("1_7oxdj")
 
@@ -42,6 +53,7 @@ sprite_frames = SubResource("SpriteFrames_qjkc5")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=665250924]
+visible = false
 shape = SubResource("CircleShape2D_x3ixa")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=114696800]
@@ -72,7 +84,9 @@ offset_right = 294.95468
 offset_bottom = 54.143627
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("4_t6cx6")
-theme_override_font_sizes/normal_font_size = 19
+theme_override_font_sizes/normal_font_size = 17
+scroll_active = false
+autowrap_mode = 1
 
 [node name="Label" type="Label" parent="CanvasLayer/TextureRect" unique_id=569732259]
 layout_mode = 0
@@ -82,3 +96,20 @@ offset_right = 63.40879
 offset_bottom = 18.580112
 text = "Villager"
 label_settings = SubResource("LabelSettings_1eb3k")
+
+[node name="Label" type="Label" parent="." unique_id=860807202]
+offset_left = -82.0
+offset_top = -65.0
+offset_right = 97.0
+offset_bottom = -42.0
+text = "Press  'E'  to  Interact"
+label_settings = SubResource("LabelSettings_7oxdj")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1362664421]
+
+[node name="feet" type="CollisionShape2D" parent="StaticBody2D" unique_id=1732298336]
+position = Vector2(-0.5, 39)
+shape = SubResource("RectangleShape2D_7oxdj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

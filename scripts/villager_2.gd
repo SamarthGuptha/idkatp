@@ -6,6 +6,7 @@ extends Area2D
 
 @onready var dialog_box = $CanvasLayer/TextureRect
 @onready var dialog_text = $CanvasLayer/TextureRect/RichTextLabel
+@onready var label: Label = $Label
 
 var player_in_range: bool = false
 var is_chatting: bool=false
@@ -15,12 +16,14 @@ var tween: Tween
 
 func _ready():
 	dialog_box.visible = false
+	label.visible = false
 
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		player_in_range = true
+		label.visible = true
 
 
 
@@ -29,6 +32,7 @@ func _on_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
 		player_in_range=false
 		end_dialog()
+		label.visible = false
 
 func start_dialog():
 	is_chatting = true
@@ -37,8 +41,8 @@ func start_dialog():
 	type_out_text()
 
 func type_out_text():
-	var duration: float = dialog_text.text.length()*0.05
 	dialog_text.text = dialog[current_line]
+	var duration: float = dialog_text.text.length()*0.05
 	dialog_text.visible_ratio =0.0
 	is_typing = true
 	tween = create_tween()
@@ -47,6 +51,7 @@ func type_out_text():
 
 func _input(event):
 	if player_in_range and event.is_action_pressed("pickup"):
+		label.visible = false
 		if not is_chatting: start_dialog()
 		elif is_typing:
 			tween.kill()
