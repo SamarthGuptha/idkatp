@@ -73,4 +73,3 @@ func type_out_text():
 	
 	
 	
-	
