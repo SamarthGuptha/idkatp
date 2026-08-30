@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b1uq3uuvx3hav" path="res://scenes/slime.tscn" id="11_bahl2"]
 [ext_resource type="Texture2D" uid="uid://b7onxd1pe5byc" path="res://assets/images/tileset/TilesCuteFantasy/Outdoor decoration/House_1_Wood_Base_Blue.png" id="16_bahl2"]
 [ext_resource type="PackedScene" uid="uid://3q6odu53p717" path="res://scenes/npcs/villager.tscn" id="16_iwr0g"]
+[ext_resource type="PackedScene" uid="uid://oulsp4mnkwco" path="res://scenes/skeleton.tscn" id="18_np2pn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uk53i"]
 texture = ExtResource("6_dnkej")
@@ -900,6 +901,9 @@ position = Vector2(2044, 946)
 
 [node name="Slime5" parent="Enemies" unique_id=805823902 instance=ExtResource("11_bahl2")]
 position = Vector2(93, -85)
+
+[node name="CharacterBody2D" parent="Enemies" unique_id=1773547464 instance=ExtResource("18_np2pn")]
+position = Vector2(-1171, 669)
 
 [node name="Exit" type="Area2D" parent="." unique_id=907052102]
 position = Vector2(-3, 0)

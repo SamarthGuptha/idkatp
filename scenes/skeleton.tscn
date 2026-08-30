@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://oulsp4mnkwco"]
 
+[ext_resource type="Script" uid="uid://2meb4omev5o2" path="res://scripts/skeleton.gd" id="1_ivqcw"]
 [ext_resource type="Texture2D" uid="uid://cyxmfl4ka3k1m" path="res://assets/images/Skeleton.png" id="1_pbvs3"]
+[ext_resource type="AudioStream" uid="uid://c0740aqh27o74" path="res://assets/audio/hit_enemy.wav" id="3_bnirc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_txkty"]
 atlas = ExtResource("1_pbvs3")
@@ -320,11 +322,41 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1773547464]
+[sub_resource type="CircleShape2D" id="CircleShape2D_pbvs3"]
+radius = 164.79
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ivqcw"]
+size = Vector2(40, 66.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txkty"]
+size = Vector2(40, 13)
+
+[node name="Skeleton" type="CharacterBody2D" unique_id=1773547464]
+script = ExtResource("1_ivqcw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1302248549]
 scale = Vector2(3.7, 3.7)
 sprite_frames = SubResource("SpriteFrames_xpc7s")
-animation = &"die"
-frame = 3
-frame_progress = 1.0
+animation = &"idle"
+
+[node name="takeDMG" type="AudioStreamPlayer2D" parent="." unique_id=1466098438]
+stream = ExtResource("3_bnirc")
+attenuation = 127.146286
+
+[node name="Sight" type="Area2D" parent="." unique_id=1988428503]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sight" unique_id=1761240274]
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CircleShape2D_pbvs3")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=700826845]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1679016564]
+position = Vector2(2, -7.25)
+shape = SubResource("RectangleShape2D_ivqcw")
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=126830109]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1341294262]
+position = Vector2(2, 19.5)
+shape = SubResource("RectangleShape2D_txkty")
