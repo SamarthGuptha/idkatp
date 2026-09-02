@@ -323,7 +323,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pbvs3"]
-radius = 164.79
+radius = 272.01654
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ivqcw"]
 size = Vector2(40, 66.5)
@@ -356,6 +356,7 @@ position = Vector2(2, -7.25)
 shape = SubResource("RectangleShape2D_ivqcw")
 
 [node name="AttackTimer" type="Timer" parent="." unique_id=126830109]
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1341294262]
 position = Vector2(2, 19.5)
