@@ -11,7 +11,7 @@ enum State {
 
 var current_state = State.IDLE
 var state_time: float = 0.0
-@export var move_speed = 180.0
+@export var move_speed = 100.0
 @export var acceleration = 400.0
 @export var friction = 400.0
 var startPos:Vector2
@@ -24,7 +24,8 @@ var last_facing: Vector2 = Vector2.DOWN
 @export var lunge_speed: float = 250.0
 @onready var anim = $AnimatedSprite2D
 @onready var hitbox = $Hitbox
-@onready var attack_timer = $AttackTimer
+@export var attack_cooldown_time: float = 1.5
+var attack_cooldown: float = 0.0
 var attack_phase: int = 0
 var attack_internal_timer: float = 0.0
 var hitbox_default_x: float =0.0
@@ -34,7 +35,6 @@ var health: int = max_health
 func _ready():
 	health = max_health
 	hitbox_default_x = hitbox.position.x
-	attack_timer.one_shot = true
 	startPos = global_position
 	state_time = randf_range(1.0, 3.0)
 	sightArea.body_entered.connect(_on_sight_body_entered)
@@ -44,6 +44,7 @@ func _ready():
 	hitbox.monitoring = false
 	change_state(State.IDLE)
 func _physics_process(delta):
+	if attack_cooldown >0.0: attack_cooldown -= delta
 	match current_state:
 		State.IDLE: state_idle(delta)
 		State.WANDER: state_wander(delta)
@@ -61,7 +62,7 @@ func change_state(new_state: int):
 	current_state = new_state
 	match current_state:
 		State.IDLE: state_time = randf_range(1.0, 3.0)
-		State.WANDER: state_time=randf_range(20, 4.0)
+		State.WANDER: state_time=randf_range(2.0, 4.0)
 		State.ATTACK:
 			attack_phase = 0
 			attack_internal_timer = 0.3
@@ -77,8 +78,8 @@ func change_state(new_state: int):
 
 func state_wander(delta):
 	
-	if has_line_of_sight():
-		change_state(State.WANDER)
+	if TargetPlayer:
+		change_state(State.CHASE)
 		return
 		
 	var direction = global_position.direction_to(wanderTarget)
@@ -90,7 +91,7 @@ func state_wander(delta):
 
 func state_idle(delta):
 	velocity = velocity.move_toward(Vector2.ZERO, friction*delta)
-	if has_line_of_sight():
+	if TargetPlayer:
 		change_state(State.CHASE)
 		return
 	state_time -=delta
@@ -99,20 +100,25 @@ func state_idle(delta):
 		
 
 func state_chase(delta):
-	if not has_line_of_sight():
-		change_state(State.CHASE)
+	if not TargetPlayer:
+		change_state(State.WANDER)
 		return
-		
-	
+
 	var distance_to_player = global_position.distance_to(TargetPlayer.global_position)
-	
-	if distance_to_player <= attack_range and attack_timer.is_stopped():
+
+	if distance_to_player <= attack_range and attack_cooldown <= 0.0:
 		change_state(State.ATTACK)
 		return
-	
+
 	var direction = global_position.direction_to(TargetPlayer.global_position)
-	if direction != Vector2.ZERO: last_facing = direction
-	velocity = velocity.move_toward(direction * move_speed, acceleration * delta)
+
+	if direction != Vector2.ZERO:
+		last_facing = direction
+
+	velocity = velocity.move_toward(
+		direction * move_speed,
+		acceleration * delta
+	)
 
 func state_attack(delta): 
 	attack_internal_timer -= delta
@@ -137,7 +143,7 @@ func state_attack(delta):
 		2:
 			velocity = velocity.move_toward(Vector2.ZERO, friction* delta)
 			if attack_internal_timer <= 0:
-				attack_timer.start(1.5)
+				attack_cooldown = attack_cooldown_time
 				change_state(State.IDLE)
 
 func state_dead(delta):
@@ -154,7 +160,7 @@ func pick_new_wander_target():
 	var randomDir = Vector2(randf_range(-1, 1), randf_range(-1,1)).normalized()
 	var randomDist = randf_range(20.0,60.0)
 	
-	wanderTarget = global_position + (randomDir * randomDist)
+	wanderTarget = startPos + randomDir * randomDist
 	
 
 
@@ -165,59 +171,27 @@ func _on_sight_body_entered(body: Node2D) -> void:
 
 
 func _on_sight_body_exited(body: Node2D) -> void:
-	pass
-
-func has_line_of_sight() -> bool:
-	if TargetPlayer == null: 
-		return false
-		
-	var space_state = get_world_2d().direct_space_state
-	var query = PhysicsRayQueryParameters2D.create(global_position, TargetPlayer.global_position)
-	query.exclude = [get_rid()] 
-	
-	var result = space_state.intersect_ray(query)
-	if result and result.collider == TargetPlayer: 
-		return true
-		
-	return false
+	if body == TargetPlayer:
+		TargetPlayer = null
 
 
-func perform_attack():
-	velocity = Vector2.ZERO
-	var tween = create_tween()
-	tween.tween_property(anim, "modulate", Color(1, 0, 0, 1), 0.3)
-	await tween.finished
-	
-	if current_state != State.ATTACK:
-		anim.modulate = Color.WHITE
-		return
-	
-	if TargetPlayer:
-		var lunge_dir = global_position.direction_to(TargetPlayer.global_position)
-		velocity = lunge_dir*lunge_speed
-		
-	hitbox.monitoring = true
-	await get_tree().create_timer(0.2).timeout
-	
-	velocity = Vector2.ZERO
-	hitbox.monitoring = false
-	anim.modulate = Color.WHITE
-	await get_tree().create_timer(0.5).timeout
-	if current_state == State.ATTACK:
-		current_state = State.IDLE
-		attack_timer.start(1.5)
+
 
 func _on_hitbox_body_entered(body):
 	if body.name == "Player" and body.has_method("take_damage"):
 		body.take_damage(attack_damage)
 		
 
-func take_damage(amount: int):
+func take_dmg(amount: int, attacker_position: Vector2):
 	if current_state == State.DEAD: return
 	health -= amount
 	if health <= 0:
 		change_state(State.DEAD)
-	else: change_state(State.STAGGER)
+		$CollisionShape2D.set_deferred("disabled", true)
+		$Sight/CollisionShape2D.set_deferred("disabled", true)
+	else: 
+		var knockback_direction = (global_position - attacker_position).normalized()
+		change_state(State.STAGGER)
 
 
 func update_animation():
