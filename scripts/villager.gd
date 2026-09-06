@@ -2,7 +2,9 @@ extends Area2D
 @onready var prompt= $Label
 @export_multiline var dialog: Array[String] = [
 	"Hello there, traveler!",
-	"I heard there are 4 magical gems scattered around",
+	"I heard there are 4 magical gems scattered around 3 worlds",
+	"You need 70 coins to go to travel to the second world!",
+	"which you can make by hunting the slimes and skeletons!",
 	"Be careful, if you die you loose 3 coins!",
 	"Good Luck!"
 ]
