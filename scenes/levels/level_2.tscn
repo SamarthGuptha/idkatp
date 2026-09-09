@@ -2733,6 +2733,8 @@ sources/0 = SubResource("TileSetAtlasSource_lkn2k")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3p04p"]
 size = Vector2(257, 384)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_5niy6"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5niy6"]
 size = Vector2(20, 82.908226)
 
@@ -2820,11 +2822,15 @@ position = Vector2(934, 302)
 position = Vector2(3777, 1009)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=973290673]
+physics_material_override = SubResource("PhysicsMaterial_5niy6")
 
 [node name="GateBlocker" type="CollisionShape2D" parent="StaticBody2D" unique_id=1168696704]
 position = Vector2(4112, 608)
 scale = Vector2(21.791437, 1.4956297)
 shape = SubResource("RectangleShape2D_5niy6")
+
+[connection signal="body_entered" from="villager3" to="villager3" method="_on_body_entered"]
+[connection signal="body_exited" from="villager3" to="villager3" method="_on_body_exited"]
 
 [editable path="Player"]
 [editable path="villager3"]

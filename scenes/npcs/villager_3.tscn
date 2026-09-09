@@ -30,7 +30,7 @@ shadow_size = 2
 shadow_color = Color(0, 0, 0, 0.53333336)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pjr8e"]
-radius = 136.0
+radius = 203.47
 
 [sub_resource type="LabelSettings" id="LabelSettings_26k76"]
 font = ExtResource("2_uekcl")
@@ -60,7 +60,6 @@ text = "Press  'E  to  Interact"
 label_settings = SubResource("LabelSettings_7iiwd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=895852667]
-visible = false
 shape = SubResource("CircleShape2D_pjr8e")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1035095555]
@@ -96,9 +95,15 @@ offset_left = 49.80595
 offset_top = 14.917127
 offset_right = 295.60153
 offset_bottom = 50.828728
+theme_override_colors/default_color = Color(0.56078434, 0.24313726, 0.3372549, 1)
+theme_override_fonts/normal_font = ExtResource("2_uekcl")
+theme_override_font_sizes/normal_font_size = 17
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=517414896]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=305762500]
 position = Vector2(-0.5, 38.5)
 shape = SubResource("RectangleShape2D_33rqc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

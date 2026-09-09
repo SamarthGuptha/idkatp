@@ -53,6 +53,7 @@ shadow_color = Color(0, 0, 0, 0.53333336)
 
 [node name="villager" type="Area2D" unique_id=2078270695]
 script = ExtResource("1_37mdv")
+dialog = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1078018256]
 scale = Vector2(4, 4)
@@ -62,7 +63,6 @@ frame = 1
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1244143089]
-visible = false
 shape = SubResource("CircleShape2D_6eh0s")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1653426704]
