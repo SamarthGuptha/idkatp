@@ -26,6 +26,9 @@ func _update_health(new_health: int) -> void:
 		hearts[len(hearts)-1-i].texture = HEART_EMPTY
 
 
+
+
+
 func fade(to_alpha: float) -> void:
 	var tween:= create_tween()
 	tween.tween_property(fade_overlay, "modulate:a", to_alpha, 1.5)

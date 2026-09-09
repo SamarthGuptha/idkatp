@@ -45,8 +45,8 @@ func _die() -> void:
 	await animated_sprite_2d.animation_finished
 	if randf() <= DROP_CHANcE:
 		drop_item()
-	queue_free()
 	if randf()>0.5: drop_coin()
+	queue_free()
 func _on_sight_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		target = body
@@ -78,9 +78,9 @@ func _on_hitbox_body_exited(body: Node2D) -> void:
 func drop_item():
 	var drop = health_pickup_scene.instantiate()
 	drop.position = position
-	var level_root = get_parent().get_parent()
-	var items = level_root.get_node("Items")
-	items.call_deferred("add_child", drop)
+	##var level_root = get_parent().get_parent()
+	##var items = level_root.get_node("Items")
+	get_tree().current_scene.add_child.call_deferred(drop)
 
 func drop_coin():
 	var coin_instance = COIN_SCENE.instantiate()

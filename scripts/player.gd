@@ -95,8 +95,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 		body.take_dmg(strength, position)
 		
 func heal(amount: int) -> void:
-	if health>=max_health: health = max_health	
-	health += amount
+	health = min(health + amount, max_health)
 	PlayerStats.health = health
 	emit_signal("health_changed", health)
 
