@@ -13,8 +13,7 @@ extends Area2D
 ]
 @onready var dialog_box = $CanvasLayer/TextureRect
 @onready var dialog_text = $CanvasLayer/TextureRect/RichTextLabel
-@onready var gate_blocker: CollisionShape2D = $StaticBody2D/CollisionShape2D
-
+@onready var gate_blocker: StaticBody2D = get_tree().get_first_node_in_group("bridge_gate")
 var dialog: Array[String] = []
 var player_in_range: bool = false
 var is_chatting: bool = false
@@ -32,8 +31,9 @@ func _ready():
 func update_gate() -> void:
 	has_paid = PlayerStats.coins >= coins_required
 	if gate_blocker:
-		gate_blocker.set_deferred("disabled", has_paid)
-	PlayerStats.coins = max(0, PlayerStats.coins)
+		var shape: CollisionShape2D = gate_blocker.get_node("GateBlocker")
+		shape.set_deferred("disabled", has_paid)
+	
 
 
 func _on_body_entered(body: Node2D) -> void:

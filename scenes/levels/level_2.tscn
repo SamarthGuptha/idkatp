@@ -2829,8 +2829,5 @@ position = Vector2(4112, 608)
 scale = Vector2(21.791437, 1.4956297)
 shape = SubResource("RectangleShape2D_5niy6")
 
-[connection signal="body_entered" from="villager3" to="villager3" method="_on_body_entered"]
-[connection signal="body_exited" from="villager3" to="villager3" method="_on_body_exited"]
-
 [editable path="Player"]
 [editable path="villager3"]

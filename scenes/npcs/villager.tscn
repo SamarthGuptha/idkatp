@@ -53,7 +53,6 @@ shadow_color = Color(0, 0, 0, 0.53333336)
 
 [node name="villager" type="Area2D" unique_id=2078270695]
 script = ExtResource("1_37mdv")
-dialog = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1078018256]
 scale = Vector2(4, 4)

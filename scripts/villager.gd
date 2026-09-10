@@ -1,16 +1,16 @@
 extends Area2D
 @onready var prompt= $Label
-@export_multiline var dialog_denied: Array[String] = [
-	
-]
-
-@export_multiline var dialog_accepted: Array[String] = [
-	
+@export_multiline var dialog: Array[String] = [
+	"Hello there, traveler!",
+	"I heard there are 4 magical gems scattered around 3 worlds",
+	"You need 70 coins to go to travel to the second world!",
+	"which you can make by hunting the slimes and skeletons!",
+	"Be careful, if you die you loose 3 coins!",
+	"Good Luck!"
 ]
 @onready var dialog_box = $CanvasLayer/TextureRect
 @onready var dialog_text = $CanvasLayer/TextureRect/RichTextLabel
-
-var has_paid: bool = false
+ 
 var player_in_range: bool = false
 var is_chatting: bool = false
 var is_typing: bool = false

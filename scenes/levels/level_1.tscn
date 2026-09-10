@@ -950,6 +950,9 @@ sources/4 = SubResource("TileSetAtlasSource_31oqk")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j7gcg"]
 size = Vector2(509, 320)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6ha0"]
+size = Vector2(110, 311)
+
 [node name="levelRoot" type="Node2D" unique_id=119257364]
 
 [node name="TileMapLayer_terrain" type="TileMapLayer" parent="." unique_id=1317709712]
@@ -1024,5 +1027,12 @@ shape = SubResource("RectangleShape2D_j7gcg")
 
 [node name="Villager2" parent="." unique_id=412575491 instance=ExtResource("19_v6ha0")]
 position = Vector2(2691, 471)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1909558188 groups=["bridge_gate"]]
+
+[node name="GateBlocker" type="CollisionShape2D" parent="StaticBody2D" unique_id=1441001365]
+position = Vector2(2814, 607.5)
+scale = Vector2(1.2747275, 1.2507019)
+shape = SubResource("RectangleShape2D_v6ha0")
 
 [editable path="Player"]
