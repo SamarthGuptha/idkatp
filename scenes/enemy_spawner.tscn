@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cnlevkt1hyai0"]
+
+[node name="EnemySpawner" type="Node2D" unique_id=571999213]
+
+[node name="Timer" type="Timer" parent="." unique_id=1595977279]
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1357823227]
+
+[node name="Marker2D" type="Marker2D" parent="SpawnPoints" unique_id=1068995755]
+
+[node name="Marker2D3" type="Marker2D" parent="SpawnPoints" unique_id=156702052]
+
+[node name="Marker2D4" type="Marker2D" parent="SpawnPoints" unique_id=1878236482]
+
+[node name="Marker2D5" type="Marker2D" parent="SpawnPoints" unique_id=2023024668]
+
+[node name="Marker2D6" type="Marker2D" parent="SpawnPoints" unique_id=1556895969]
+
+[node name="Marker2D2" type="Marker2D" parent="SpawnPoints" unique_id=389771173]

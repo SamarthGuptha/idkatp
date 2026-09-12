@@ -73,6 +73,7 @@ func end_dialog():
 	is_chatting = false
 	dialog_box.visible=false
 	
+	
 
 func next_line():
 	current_line+=1

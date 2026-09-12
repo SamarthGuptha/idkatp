@@ -1,5 +1,5 @@
 extends Node2D
-var levelNum: int = 2
+var levelNum: int = 3
 var currentLevelRoot: Node = null
 @onready var hud: CanvasLayer = $HUD
 func _ready() -> void:
