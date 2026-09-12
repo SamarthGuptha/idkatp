@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://cnlevkt1hyai0"]
 
+[ext_resource type="Script" uid="uid://cjsfqdrdi3a3l" path="res://scripts/enemy_spawner.gd" id="1_ks1gq"]
+
 [node name="EnemySpawner" type="Node2D" unique_id=571999213]
+script = ExtResource("1_ks1gq")
 
 [node name="Timer" type="Timer" parent="." unique_id=1595977279]
 

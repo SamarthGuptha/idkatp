@@ -172,7 +172,7 @@ radius = 6.7687583
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjw23"]
 size = Vector2(22, 22.5)
 
-[node name="Slime" type="CharacterBody2D" unique_id=1017460]
+[node name="Slime" type="CharacterBody2D" unique_id=1017460 groups=["enemy"]]
 scale = Vector2(2, 2)
 collision_layer = 2
 collision_mask = 0

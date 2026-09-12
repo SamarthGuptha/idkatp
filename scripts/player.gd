@@ -91,7 +91,7 @@ func update_hitbox_offset() -> void:
 
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if is_attacking and body.name.begins_with("Slime"):
+	if is_attacking and body.is_in_group("enemy"):
 		body.take_dmg(strength, position)
 		
 func heal(amount: int) -> void:

@@ -16,8 +16,6 @@ func _load_level(level: int) -> void:
 	add_child(currentLevelRoot)
 	currentLevelRoot.name = "LevelRoot"
 	_setup_level(currentLevelRoot)
-		
-		
 
 func _setup_level(levelRoot: Node) -> void:
 	var player = levelRoot.get_node("Player")

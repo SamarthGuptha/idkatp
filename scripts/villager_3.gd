@@ -32,7 +32,7 @@ func update_gate() -> void:
 	has_paid = PlayerStats.coins >= coins_required
 	if gate_blocker:
 		var shape: CollisionShape2D = gate_blocker.get_node("GateBlocker")
-		shape.set_deferred("disabled", has_paid)
+		shape.set_deferred("Disabled", has_paid)
 	
 
 
